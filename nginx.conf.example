@@ -2,7 +2,7 @@
 #
 # 1. Add this once to the http {} scope (e.g. /etc/nginx/nginx.conf):
 #
-#       limit_req_zone $binary_remote_addr zone=osuapi:10m rate=6r/s;
+#       limit_req_zone $binary_remote_addr zone=osuapi:10m rate=3r/s;
 #
 # 2. Drop this server block into /etc/nginx/sites-available/osu-proxy.conf
 #    and symlink it from sites-enabled, then `nginx -t && systemctl reload nginx`.
@@ -20,7 +20,7 @@ server {
     error_log  /var/log/nginx/osu-proxy.error.log;
 
     location / {
-        limit_req zone=osuapi burst=30 delay=30;
+        limit_req zone=osuapi burst=10 nodelay;
 
         proxy_pass http://127.0.0.1:3000;
         proxy_http_version 1.1;
