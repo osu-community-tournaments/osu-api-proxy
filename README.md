@@ -36,8 +36,7 @@ Verify: `curl http://127.0.0.1:3000/health` → `{"status":"ok",...}`.
 1. Add to `http {}` once (e.g. `/etc/nginx/nginx.conf`):
 
    ```nginx
-   # 160r/m ≈ 2.67 r/s ≈ 40 requests per 15s sustained.
-   limit_req_zone $binary_remote_addr zone=osuapi:10m rate=160r/m;
+   limit_req_zone $binary_remote_addr zone=osuapi:10m rate=3r/s;
    ```
 
 2. Copy `nginx.conf.example` to `/etc/nginx/sites-available/osu-proxy.conf`,
