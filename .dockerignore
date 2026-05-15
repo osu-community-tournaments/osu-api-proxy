@@ -1,0 +1,10 @@
+node_modules
+npm-debug.log
+.env
+.git
+.gitignore
+docs
+README.md
+*.md
+wrangler.toml
+src/index.ts
